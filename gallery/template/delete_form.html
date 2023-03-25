@@ -1,0 +1,10 @@
+{% extends 'index.html' %} {% block content %}
+
+<form action="#" method="POST">
+  {% csrf_token %} <br />
+  <p>Are you sure you want to delete "{{gallery}}"?</p>
+  <a href="{% url 'gallery' %}">Go Back</a>
+  <input type="submit" value="Confirm" />
+</form>
+
+{% endblock %}

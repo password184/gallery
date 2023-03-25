@@ -1,0 +1,23 @@
+{% extends 'index.html' %} {% block content %}
+
+<div class="container py-5">
+  <h1 class="mb-4">Create Gallery</h1>
+  <div class="inner">
+    <form
+      action="{% url 'user-account' %}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %} <br />
+      {% for field in form %}
+      <label class="form-group"> {{field.label}} </label>
+      {{field}} {% endfor %}
+
+      <button class="submitbtn" type="submit">
+        Submit
+        <i class="zmdi zmdi-arrow-right"></i>
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock content %}

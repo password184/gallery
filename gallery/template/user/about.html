@@ -1,0 +1,84 @@
+{% extends 'index.html' %} <br />
+{% load static %} {% block content %} <br />
+
+<section
+  class="about_page"
+  style="
+    background-image: linear-gradient(
+        rgba(155, 115, 7, 0.6),
+        rgba(21, 54, 116, 0.6)
+      ),
+      url('{% static 'images\pexels-andrea-piacquadio-845457.jpg' %}');
+  "
+>
+  {% include 'navbar.html' %}
+  <div class="container about_me">
+    <h1 class="animated bounceInRight" style="animation-delay: 1s">About me</h1>
+  </div>
+</section>
+
+{% for profile in profiles %}
+<section class="passion">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-4 col-md-6 col-sm-12 passion_elements"
+        data-aos="fade-left"
+        data-aos-delay="500"
+      >
+        <h1>This is my <span>passion</span></h1>
+        <p>{{profile.bio}}</p>
+      </div>
+      <div
+        class="col-lg-8 col-md-6 col-sm-12 passion_img"
+        data-aos="fade-right"
+        data-aos-delay="500"
+      >
+        <img src="{{profile.profile_image.url}}" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-4 col-md-6 col-sm-12"
+        data-aos="fade-left"
+        data-aos-delay="500"
+      >
+        <h1 class="contact_h1">Give me a call</h1>
+      </div>
+      <div
+        class="col-lg-8 col-md-6 col-sm-12 contact_elements"
+        data-aos="fade-right"
+        data-aos-delay="500"
+      >
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <p>
+              Email: <br />
+              <a href="#">{{profile.email}}</a>
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <p>
+              Location: <br />
+              <a href="#">{{profile.location}}</a>
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <p>
+              Phone Number: <br />
+              <a href="#">+237 {{profile.number}}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endfor %} <br />
+{% include 'footer.html' %} {% endblock content%}

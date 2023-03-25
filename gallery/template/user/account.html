@@ -1,0 +1,72 @@
+{% extends 'index.html' %}{% block content %} <br />
+<section>
+  {% include 'navbar.html' %}
+  <div class="container edit">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 edit_element1">
+        <img src="{{account.profile_image.url}}" alt="" />
+        <button><a href="{% url 'edit-account' %}">Edit</a></button>
+      </div>
+
+      <div class="col-lg-8 col-md-6 col-sm-12 edit_element2">
+        <ul style="padding: 0">
+          <li>Name: {{account.name}}</li>
+          <li>Location: {{account.location}}</li>
+          <li>Number: {{profile.number}}</li>
+          <li>Email: {{account.email}}</li>
+        </ul>
+        <br />
+        <p>Bio:</p>
+        <p>{{account.bio}}</p>
+
+        <div class="social_media">
+          <ul style="padding: 0">
+            <li><i class="fab fa-facebook-f"></i>{{account.facebook}}</li>
+            <li><i class="fab fa-twitter"></i>{{account.twitter}}</li>
+            <li><i class="fab fa-instagram"></i>{{account.instagram}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRDUDE ARTS -->
+
+<section class="crude_arts">
+  <div class="container">
+    <div class="arts_elements">
+      <p>All Arts</p>
+      <a href="{% url 'create_gallery' %}">Add Arts</a>
+    </div>
+
+    <div class="row g-4">
+      {% for gallery in gallerys %}
+      <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+        <div class="author-content-overide content">
+          <div>
+            <span class="crude_elements"
+              ><a href="{% url 'edit_gallery' gallery.id %}">Edit</a></span
+            >
+            <span class="crude_elements crude_delete"
+              ><a href="{% url 'delete_gallery' gallery.id %}">Delete</a></span
+            >
+          </div>
+
+          <div class="content-overlay"></div>
+          <img
+            class="crude_arts_image"
+            src="{{gallery.gallery_image.url}}"
+            alt=""
+          />
+          <div class="content-details fadeIn-bottom">
+            <h3 class="content-title">{{gallery.name}}</h3>
+            <p class="content-text">{{gallery.category}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include 'footer.html' %} {% endblock content%}
